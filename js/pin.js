@@ -31,11 +31,12 @@ document.getElementById('generate-btn').addEventListener('click', function () {
     // const generateNumber = Math.round(Math.random() * 1000 + 1234);
     generateNumber();
 })
-
 const success = document.getElementById('success');
 success.style.display = 'none';
 const fail = document.getElementById('fail');
 fail.style.display = 'none';
+
+
 
 document.getElementById('submit-button').addEventListener('click', function () {
     // console.log('submit-button');
@@ -44,16 +45,21 @@ document.getElementById('submit-button').addEventListener('click', function () {
     const generateNumber = document.getElementById('generate-display');
     const generateNumberString = generateNumber.value;
 
+    const tryLeft = document.getElementById('action-left');
+    tryLeft.style.display = 'none';
+    const tryLeftString = tryLeft.innerText;
+    const tryInt = parseInt(tryLeftString);
+
     if (matchNumberString === generateNumberString) {
         success.style.display = 'block';
         fail.style.display = 'none';
+        tryLeft.style.display = 'none';
     }
     else {
         fail.style.display = 'block';
         success.style.display = 'none';
+
+        tryLeft.style.display = 'block';
+        tryLeft.innerText = tryInt + 1;
     }
-    const tryLeft = document.getElementById('action-left');
-    const tryLeftString = tryLeft.innerText;
-    const tryInt = parseInt(tryLeftString);
-    tryLeft.innerText = tryInt + 1;
 })
